@@ -1,0 +1,11 @@
+<header style="color: black" class="header">
+    <h1>Upcoming Angular Events</h1>
+</header>
+<hr>
+
+<section class="row">
+    <section *ngFor="let event of events" class="col-12 col-lg-6">
+        <event-card [event]="event" [some]="someProperty" (eventBubbled)="EventBubbled($event)">
+        </event-card>
+    </section>
+</section>

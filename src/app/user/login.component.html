@@ -1,0 +1,100 @@
+<h1>Login</h1>
+<hr>
+<div class="col-md-4">
+
+
+
+    <!-- There are many ways to get values from a form but the best is using ngSubmit because it makes validation possible and easy -->
+    <form #loginForm="ngForm" autocomplete="off" (ngSubmit)="login(loginForm.value)" novalidate>
+
+        <!-- for a one way binding with ngModel we use the ngModel like this ===>
+            ngModel requires us to define a name attribute
+            
+            <input (ngModel)="userName" name ="userName" id="userName" type="text"
+            class="form-control" placeholder="User Name..." /> -->
+
+        <!-- for a two way binding with ngModel we use the ngModel like this ===> <input [(ngModel)]="userName" name ="userName" id="userName" type="text"
+                        class="form-control" placeholder="User Name..." /> -->
+
+
+        <div class="form-group">
+            <label for="userName">User Name:</label>
+            <em
+                *ngIf="loginForm.controls['userName']?.invalid && (loginForm.controls['userName']?.touched || onMouseOverLogin) ">Required
+            </em>
+            <input (ngModel)="userName" name="userName" required id="userName" type="text" class="form-control"
+                placeholder="User Name..." />
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <em
+                *ngIf="loginForm.controls['password']?.invalid && (loginForm.controls['password']?.touched || onMouseOverLogin)">Required:
+            </em>
+            <input (ngModel)="password" name="password" required id="password" type="password" class="form-control"
+                placeholder="Password..." />
+        </div>
+        <span (mouseenter)="onMouseOverLogin =true" (mouseleave)="onMouseOverLogin =false">
+
+
+            <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary">Login</button>
+        </span>
+        <button type="button" (click)="cancel()" class="btn btn-default">Cancel</button>
+    </form>
+</div>
+
+
+<div class="col-md-3">
+    <h3>USER Name</h3>
+    <p>value: {{loginForm.controls['userName']?.value}}</p>
+    <p> loginForm.controls.userName.valid: {{loginForm.controls['userName']?.valid}}</p>
+    <br />
+    loginForm.controls.userName.invalid: {{loginForm.controls['userName']?.invalid}}
+    <br>
+    loginForm.controls.userName.dirty: {{loginForm.controls['userName']?.dirty}}
+    <br>
+    loginForm.controls.userName.pristine: {{loginForm.controls['userName']?.pristine}}
+    <br>
+    loginForm.controls.userName.touched: {{loginForm.controls['userName']?.touched}}
+    <br>
+    loginForm.controls.userName.untouched: {{loginForm.controls['userName']?.untouched}}
+    <br>
+</div>
+
+
+
+<div class="col-md-3">
+    <h3>Password</h3>
+
+    <p>value: {{loginForm.controls['password']?.value}}</p>
+
+    loginForm.controls.password.valid: {{loginForm.controls['password']?.valid}}
+    <br />
+    loginForm.controls.password.invalid: {{loginForm.controls['password']?.invalid}}
+    <br>
+    loginForm.controls.password.dirty: {{loginForm.controls['password']?.dirty}}
+    <br>
+    loginForm.controls.password.pristine: {{loginForm.controls['password']?.pristine}}
+    <br>
+    loginForm.controls.password.touched: {{loginForm.controls['password']?.touched}}
+    <br>
+    loginForm.controls.password.untouched: {{loginForm.controls['password']?.untouched}}
+    <br>
+</div>
+
+
+<div class="col-md-3">
+    <h3>Login Form</h3>
+
+    LoginForm.valid: {{loginForm.valid}}
+    <br />
+    LoginForm.invalid: {{loginForm.invalid}}
+    <br />
+    LoginForm.dirty: {{loginForm.dirty}}
+    <br />
+    LoginForm.pristine: {{loginForm.pristine}}
+    <br />
+    LoginForm.touched: {{loginForm.touched}}
+    <br />
+    LoginForm.untouched: {{loginForm.untouched}}
+    <br />
+</div>

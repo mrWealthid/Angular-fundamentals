@@ -1,0 +1,83 @@
+<section [routerLink]="['/events', event.id]" class="well hoverwell section-events__card">
+
+    <!-- we use ngIf for conditional rendering in angular -->
+
+    <h2 (click)="showToast(event)">{{event?.name | uppercase}}</h2>
+    <!-- <p [hidden]="!event.location">Event Location: {{event?.location?.address}} {{event?.location?.city}}, -->
+    <p *ngIf="event?.location">Event Location: {{event?.location?.address}} {{event?.location?.city}},
+        {{event?.location?.country}}
+    </p>
+
+    <!-- <p>{{some}}</p> -->
+
+    <!-- using custom pipes here -->
+
+
+    <!-- using style binding directly on html based on conditions -->
+    <p [style.color]="event?.time ==='8:00 am' ? 'red': 'yellow'">Event Date: {{event?.date | date:"shortDate"}}</p>
+
+    <!-- <p [style.color]="event?.time ==='8:00 am' ? 'red': 'yellow'">Event Date: {{event.date | convertToSpaces: '/'}}</p> -->
+    <!-- <div [class.green]="event?.time ==='8:00 am'" [ngSwitch]='event?.time'>{{event?.time}} -->
+
+    <!-- using ngClass -->
+    <!--
+      Using Inline  
+        <div [ngClass]="{first :event?.time ==='8:00 am', second :event?.time ==='8:00 am', third :event?.time ==='9:00 am'}" -->
+
+
+    <!-- using ngStyle -->
+
+    <!-- <div [ngStyle]="{'color': event?.time === '8:00 am'? 'green': 'red', 'font-weight': event?.time === '8:00 am'? 'bold': 'normal'}"
+        [ngSwitch]='event?.time'>
+        {{event?.time}}
+    using a function 
+
+<div [ngStyle]="checkStyles()" [ngSwitch]='event?.time'>
+    {{event?.time}}
+    -->
+    <!-- Using a function -->
+
+
+    <div [ngClass]="checkClass()" [ngSwitch]='event?.time'>{{event?.time}}
+        <span *ngSwitchCase="'8:00 am'">(Early Start)</span>
+        <span *ngSwitchCase="'10:00 am'">(Late Start)</span>
+        <span *ngSwitchDefault>(Normal Start)</span>
+
+    </div>
+
+    <p>Event Ticket: {{event?.price | currency: 'USD': 'symbol' : '1.2-2'}}</p>
+
+
+    <!-- This would hide elements -->
+    <!-- <p [hidden]="!event.onlineURL">Online URL: {{event.onlineURL}}</p> -->
+
+    <!-- This would remove elements when expression is true -->
+    <!-- using pipes -->
+    <p *ngIf="event?.onlineUrl">Online URL: {{event.onlineUrl | lowercase}}</p>
+
+
+
+    <section class="section-events__card--btn">
+        <button (click)="handleClick()">Click Me</button>
+        <!-- To toggle a button -->
+        <!-- <button (click)="handleToggle()"> Click Me </button>
+
+        <span> {{isMarried ? "Married": "Single"}}</span> -->
+
+
+    </section>
+
+    <!-- 
+        using reference with prefix of # -->
+    <!-- 
+using ref to access properties and methods from a child in the parents '
+
+Things to note when using ref=== for an iterated data; then references may likely be the same so, ref might throw an error
+-->
+
+    <!-- <button (click)="btnRef.logFoo(event)">Using Reference</button> -->
+
+    <!-- <h2>{{btnRef.someProperty}}</h2> -->
+
+
+</section>

@@ -1,0 +1,29 @@
+/* * {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+} */
+
+.section-events__card {
+  min-height: 290px;
+  background: white;
+  border-radius: 20px;
+  color: black;
+}
+.green {
+  color: green !important;
+}
+
+.first {
+  color: green !important;
+}
+
+.bold {
+  font-weight: 800;
+}
+.second {
+  color: blue !important;
+}
+.third {
+  color: cadetblue !important;
+}
